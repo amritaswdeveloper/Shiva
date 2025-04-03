@@ -1,11 +1,6 @@
 <html>
-<body>
-<input type="password" id="password" placeholder="Enter Password">
-<button onclick="checkPassword()">Login</button>
-  
-</body>
-</html>
-<script>
+  <head>
+    <script>
   function checkPassword() {
     if (document.getElementById("password").value === "mypassword") {
       localStorage.setItem("authenticated", "true");
@@ -15,3 +10,11 @@
     }
   }
 </script>
+  </head>
+<body>
+<input type="password" id="password" placeholder="Enter Password">
+<button onclick="checkPassword()">Login</button>
+  
+</body>
+</html>
+
