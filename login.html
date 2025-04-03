@@ -3,6 +3,25 @@
 
 
     <script>
+
+function parseSignedRequest(signedRequest, secret) {
+    const [encodedSig, payload] = signedRequest.split('.');
+    const jsonPayload = atob(payload.replace(/-/g, '+').replace(/_/g, '/'));
+    return JSON.parse(jsonPayload);
+}
+
+// Example usage
+const urlParams = new URLSearchParams(window.location.search);
+const signedRequest = urlParams.get("signed_request");
+alert(signedRequest)
+      
+if (signedRequest) {
+    const secret = "YOUR_SALESFORCE_SECRET"; // Keep this secure
+    const decodedData = parseSignedRequest(signedRequest, secret);
+    console.log("Salesforce User Data:", decodedData);
+}
+
+      
   function checkPassword() {
     if (document.getElementById("password").value === "mypassword") { 
       localStorage.setItem("authenticated", "true");
